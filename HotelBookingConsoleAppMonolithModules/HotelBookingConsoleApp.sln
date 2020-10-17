@@ -3,22 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingBL", "BookingBL\BookingBL.csproj", "{BC2BBC5D-1A44-4CE7-9431-DBEA67984CAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingBL", "BookingBL\BookingBL.csproj", "{BC2BBC5D-1A44-4CE7-9431-DBEA67984CAF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C6318D3B-7144-4CD5-B132-CAF74BB648AC} = {C6318D3B-7144-4CD5-B132-CAF74BB648AC}
 		{EC95EEA3-FC8B-41ED-AEB5-5EE09741D223} = {EC95EEA3-FC8B-41ED-AEB5-5EE09741D223}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingDAL", "BookingDAL\BookingDAL.csproj", "{EC95EEA3-FC8B-41ED-AEB5-5EE09741D223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingDAL", "BookingDAL\BookingDAL.csproj", "{EC95EEA3-FC8B-41ED-AEB5-5EE09741D223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCuttingConcerns", "CrossCuttingConcerns\CrossCuttingConcerns.csproj", "{C6318D3B-7144-4CD5-B132-CAF74BB648AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossCuttingConcerns", "CrossCuttingConcerns\CrossCuttingConcerns.csproj", "{C6318D3B-7144-4CD5-B132-CAF74BB648AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{90AA2C94-76FE-4BCA-BA24-C935B3AA0B05}"
 	ProjectSection(SolutionItems) = preProject
 		HotelBookingConsoleAppUI\HotelBookingConsoleApp.csproj = HotelBookingConsoleAppUI\HotelBookingConsoleApp.csproj
+		OrdersService\OrdersService.csproj = OrdersService\OrdersService.csproj
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBookingConsoleApp", "HotelBookingConsoleAppUI\HotelBookingConsoleApp.csproj", "{8FD9B1CD-BCF0-4396-9756-F077096830CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuestsService", "GuestsService\GuestsService.csproj", "{8BE556F3-D5EF-4579-A7DD-A369806C3A21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrdersService", "OrdersService\OrdersService.csproj", "{E2006D32-5736-418C-A1AD-31E75135DB41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomsService", "RoomsService\RoomsService.csproj", "{1809B168-8FB6-414C-8504-7C38E2B1129B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +49,18 @@ Global
 		{8FD9B1CD-BCF0-4396-9756-F077096830CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FD9B1CD-BCF0-4396-9756-F077096830CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FD9B1CD-BCF0-4396-9756-F077096830CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE556F3-D5EF-4579-A7DD-A369806C3A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE556F3-D5EF-4579-A7DD-A369806C3A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE556F3-D5EF-4579-A7DD-A369806C3A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE556F3-D5EF-4579-A7DD-A369806C3A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2006D32-5736-418C-A1AD-31E75135DB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2006D32-5736-418C-A1AD-31E75135DB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2006D32-5736-418C-A1AD-31E75135DB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2006D32-5736-418C-A1AD-31E75135DB41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1809B168-8FB6-414C-8504-7C38E2B1129B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1809B168-8FB6-414C-8504-7C38E2B1129B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1809B168-8FB6-414C-8504-7C38E2B1129B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1809B168-8FB6-414C-8504-7C38E2B1129B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

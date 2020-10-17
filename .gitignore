@@ -18,3 +18,7 @@
 /HotelBookingConsoleAppMonolithModules/netcoreapp3.1
 /HotelBookingConsoleAppMonolithModules/OrdersService/bin/Debug/netcoreapp3.1
 /HotelBookingConsoleAppMonolithModules/OrdersService/obj
+/HotelBookingConsoleAppMonolithModules/GuestsService/bin/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/GuestsService/obj
+/HotelBookingConsoleAppMonolithModules/RoomsService/bin/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/RoomsService/obj
