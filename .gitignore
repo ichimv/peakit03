@@ -16,3 +16,5 @@
 /HotelBookingConsoleAppMonolithModules/CrossCuttingConcerns/obj
 /HotelBookingConsoleAppMonolithModules/HotelBookingConsoleAppUI/obj
 /HotelBookingConsoleAppMonolithModules/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/OrdersService/bin/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/OrdersService/obj
