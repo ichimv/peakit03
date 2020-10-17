@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BookingDAL.Models;
+using CrossCuttingConcerns.Models;
 
-namespace BookingDAL.Repositories
+namespace CrossCuttingConcerns.Repositories
 {
    public interface IRepository<TKey>
    {

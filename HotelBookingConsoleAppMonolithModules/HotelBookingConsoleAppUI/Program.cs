@@ -1,6 +1,6 @@
 ﻿using System;
 using BookingBL;
-using BookingDAL.Repositories;
+using CrossCuttingConcerns.Repositories;
 using Microsoft.Extensions.Logging;
 
 

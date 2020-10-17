@@ -4,7 +4,8 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using BookingDAL.Models;
-using BookingDAL.Repositories;
+using CrossCuttingConcerns.Models;
+using CrossCuttingConcerns.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace BookingBL

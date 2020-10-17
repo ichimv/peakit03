@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BookingDAL.Models;
+using CrossCuttingConcerns.Models;
 using Microsoft.Extensions.Logging;
 
-namespace BookingDAL.Repositories
+namespace CrossCuttingConcerns.Repositories
 {
    public class Repository : IRepository<Guid>
    {

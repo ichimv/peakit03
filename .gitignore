@@ -6,3 +6,13 @@
 /HotelBookingConsoleAppMonolith/.vs/HotelBookingConsoleAppMonolith/v16
 /HotelBookingConsoleAppMonolith/HotelBookingConsoleAppMonolith
 /HotelBookingConsoleAppMonolith/.vs/HotelBookingConsoleAppMonolith/DesignTimeBuild/.dtbcache.v2
+/HotelBookingConsoleAppMonolithModules/.vs/HotelBookingConsoleApp/v16
+/HotelBookingConsoleAppMonolithModules/BookingBL/bin/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/BookingBL/obj
+/HotelBookingConsoleAppMonolithModules/BookingDAL/bin/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/BookingDAL/obj/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/BookingDAL/obj
+/HotelBookingConsoleAppMonolithModules/CrossCuttingConcerns/bin/Debug/netcoreapp3.1
+/HotelBookingConsoleAppMonolithModules/CrossCuttingConcerns/obj
+/HotelBookingConsoleAppMonolithModules/HotelBookingConsoleAppUI/obj
+/HotelBookingConsoleAppMonolithModules/netcoreapp3.1
