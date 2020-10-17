@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookingBL\BookingBL.csproj" />
+    <ProjectReference Include="..\GuestsService\GuestsService.csproj" />
+    <ProjectReference Include="..\OrdersService\OrdersService.csproj" />
+    <ProjectReference Include="..\RoomsService\RoomsService.csproj" />
   </ItemGroup>
 
 </Project>

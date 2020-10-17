@@ -1,48 +1,100 @@
-﻿using System;
-using BookingBL;
-using CrossCuttingConcerns.Repositories;
-using Microsoft.Extensions.Logging;
+﻿using GuestsService.Commands;
+using OrdersService.Commands;
+using RoomsService.Commands;
+using System;
+using System.Threading.Tasks;
+using OrdersService.Queries;
+using RoomsService.Queries;
 
-
-namespace HotelBookingConsoleApp
+namespace HotelBookingConsoleAppCQRS
 {
    class Program
    {
       static void Main(string[] args)
       {
-         LoggerFactory loggerFactory = new LoggerFactory();
-
-         ILogger<Repository> repositoryLogger = loggerFactory.CreateLogger<Repository>();
-         ILogger<BookingManagement> bookingManagementLogger = loggerFactory.CreateLogger<BookingManagement>();
-
-         Repository repository = new Repository(repositoryLogger);
-         BookingManagement bookingManagement = new BookingManagement(bookingManagementLogger, repository);
-
-         DateTime startDate = DateTime.Now;
-         DateTime endDate = startDate.AddDays(1);
-
          try
          {
-            Guid orderGuid1 = bookingManagement.AddBooking(new Guid(), "John", "Johanson",
-               "Single", startDate, endDate);
+            DateTime startDate = DateTime.Now;
+            DateTime endDate = startDate.AddDays(1);
 
-            Guid orderGuid2 = bookingManagement.AddBooking(new Guid(), "John", "Johanson",
-               "Double", startDate, endDate);
+            Guid orderGuid1 = AddBookingAsync(Guid.NewGuid(), "John", "Johanson",
+               "Single", startDate, endDate).Result;
 
-            Guid orderGuid3 = bookingManagement.AddBooking(new Guid(), "John", "Johanson",
-               "Single", startDate, endDate);
+            Guid orderGuid2 = AddBookingAsync(Guid.NewGuid(), "John", "Johanson",
+               "Double", startDate, endDate).Result;
 
-            bookingManagement.CancelBooking(orderGuid1);
+            CancelBookingAsync(orderGuid1).ConfigureAwait(true);
 
-            orderGuid3 = bookingManagement.AddBooking(new Guid(), "John", "Johanson",
-               "Single", startDate, endDate);
+            orderGuid1 = AddBookingAsync(Guid.NewGuid(), "John", "Johanson",
+               "Single", startDate, endDate).Result;
 
-            bookingManagement.CancelBooking(orderGuid1);
+            CancelBookingAsync(orderGuid2).ConfigureAwait(true);
+
          }
-         catch (Exception ex)
+         catch (Exception e)
          {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine(e);
          }
+      }
+
+      static async Task<Guid> AddBookingAsync(Guid guestIdentity, string firstName, string lastName,
+         string roomTypeTitle, DateTime startDate, DateTime endDate)
+      {
+         var availableRoomQuery = new AvailableRoomQuery() { RoomTypeTitle = roomTypeTitle };
+         var availableRoomQueryHandler = new AvailableRoomQueryHandler();
+         AvailableRoomQueryResult availableRoomQueryResult = await availableRoomQueryHandler.HandleAsync(availableRoomQuery);
+
+         var roomPriceCommand = new GetRoomPriceCommand()
+         {
+            RoomId = availableRoomQueryResult.AvailableRoomGuid,
+            StartDate = startDate,
+            EndDate = endDate
+         };
+         var roomPriceCommandHandler = new GetRoomPriceCommandHandler();
+         await roomPriceCommandHandler.HandleAsync(roomPriceCommand);
+
+         var createGuestCommand = new CreateGuestCommand()
+         {
+            Identity = guestIdentity,
+            FirstName = firstName,
+            LastName = lastName
+         };
+         var createGuestCommandHandler = new CreateGuestCommandHandler();
+         await createGuestCommandHandler.HandleAsync(createGuestCommand);
+
+         var createOrderCommand = new CreateOrderCommand()
+         {
+            RoomId = availableRoomQueryResult.AvailableRoomGuid,
+            GuestId = createGuestCommand.GuestId,
+            StartDate = startDate,
+            EndDate = endDate,
+            Price = roomPriceCommand.Price
+         };
+         var createOrderCommandHandler = new CreateOrderCommandHandler();
+         await createOrderCommandHandler.HandleAsync(createOrderCommand);
+
+         return createOrderCommand.OrderId;
+      }
+
+      static async Task CancelBookingAsync(Guid orderGuid)
+      {
+         var roomIdAttachedToOrderQuery = new RoomAttachedToOrderQuery() { OrderId = orderGuid };
+         var roomIdAttachedToOrderQueryHandler = new RoomAttachedToOrderQueryHandler();
+         RoomAttachedToOrderQueryResult roomIdAttachedToOrderQueryResult = await roomIdAttachedToOrderQueryHandler.HandleAsync(roomIdAttachedToOrderQuery);
+         if (roomIdAttachedToOrderQueryResult.RoomId == Guid.Empty)
+            return;
+
+         var updateRoomStatusCommand = new UpdateRoomStatusCommand()
+         {
+            RoomId = roomIdAttachedToOrderQueryResult.RoomId,
+            IsFree = true
+         };
+         var updateRoomStatusCommandHandler = new UpdateRoomStatusCommandHandler();
+         await updateRoomStatusCommandHandler.HandleAsync(updateRoomStatusCommand);
+
+         var deleteOrderCommand = new DeleteOrderCommand() { OrderGuid = orderGuid };
+         var deleteOrderCommandHandler = new DeleteOrderCommandHandler();
+         await deleteOrderCommandHandler.HandleAsync(deleteOrderCommand);
       }
    }
 }
